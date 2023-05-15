@@ -17,6 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -25,17 +26,13 @@ import (
 
 // NodeSpec defines the desired state of Node
 type NodeSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of Node. Edit node_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Container corev1.Container `json:"container"`
+	ChainId   string           `json:"chainId"`
+	Volumes   []corev1.Volume  `json:"volumes,omitempty"`
 }
 
 // NodeStatus defines the observed state of Node
 type NodeStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
 }
 
 //+kubebuilder:object:root=true
